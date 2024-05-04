@@ -32,6 +32,7 @@ jobs:
         TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
       run: |
         echo "Configuring Terraform Cloud API Token..."
+        mkdir -p $HOME/.terraform.d
         echo "$TF_API_TOKEN" > $HOME/.terraform.d/credentials.tfrc.json
 
 
