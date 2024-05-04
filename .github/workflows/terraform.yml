@@ -30,6 +30,9 @@ jobs:
     - name: Terraform Init
       id: init
       run: terraform init
+      env:
+        TF_CLI_CONFIG_FILE: ${{ github.workspace }}/.terraformrc
+        ATLAS_TOKEN: ${{ secrets.TERRAFORM_TOKEN }}
 
     # Run a terraform fmt for push
     - name: Terraform Format
