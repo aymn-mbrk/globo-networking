@@ -26,14 +26,20 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
 
+
+    - name: Configure Terraform Cloud API Token
+      env:
+        TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+      run: |
+        echo "Configuring Terraform Cloud API Token..."
+        echo "$TF_API_TOKEN" > $HOME/.terraform.d/credentials.tfrc.json
+
+
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       id: init
       run: terraform init
-      env:
-        TF_CLI_CONFIG_FILE: ${{ github.workspace }}/.terraformrc
-        ATLAS_TOKEN: ${{ secrets.TERRAFORM_TOKEN }}
-
+ 
     # Run a terraform fmt for push
     - name: Terraform Format
       id: fmt
