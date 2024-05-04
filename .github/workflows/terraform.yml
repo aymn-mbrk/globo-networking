@@ -33,7 +33,7 @@ jobs:
       run: |
         echo "Configuring Terraform Cloud API Token..."
         mkdir -p $HOME/.terraform.d
-        echo "$TF_API_TOKEN" > $HOME/.terraform.d/credentials.tfrc.json
+        echo '{"credentials":{"app.terraform.io":{"token":"'$TF_API_TOKEN'"}}}' | jq . > $HOME/.terraform.d/credentials.tfrc.json
 
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
