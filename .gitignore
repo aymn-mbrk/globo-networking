@@ -14,4 +14,4 @@
 # .pem files
 *.pem
 
-backend.tf
+backend_local.tf
