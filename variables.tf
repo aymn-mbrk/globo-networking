@@ -20,10 +20,6 @@ variable "environment" {
   default     = "development"
 }
 
-variable "billing_code" {
-  type        = string
-  description = "(Required) billing code for network workspace"
-}
 
 variable "cidr_block" {
   type        = string
